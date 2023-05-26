@@ -1,0 +1,22 @@
+body{
+    background-image: url(https://i.postimg.cc/2yv5dt8n/2413708.jpg);
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(100, 149, 237, 0.4);
+
+}
+.form-container > form{
+    margin-top: 5vh;
+}
+.form-container > form > input {
+    display: block;
+    margin-top: 3vh;
+    border: solid black 2px;
+    border-radius: 5px;
+}
+
