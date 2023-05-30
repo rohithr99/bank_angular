@@ -7,11 +7,11 @@ register -->
 <h1 class = "text-center mt-5">Create New Account</h1>
     <div class="text-center form-container">
         <form action="" class="mt-5">
-            <input id="reuser" type="text" placeholder = "username" class="form-control">
-            <input id="reacc" type="text" placeholder="enter acc no." class="mt-3 form-control">
-            <input id="repass" type="password" placeholder="set a password" class="form-control mt-3">
-            <input id="reconfirm" type="password" placeholder="confirm password" class="form-control mt-3">
-            <button type="submit" class="btn btn-success w-50 mt-4">create</button>
+            <input [(ngModel)]="acno" id="reuser" name="nName" type="text" placeholder = "username" class="form-control">
+            <input [(ngModel)]="username" id="reacc" name="nacc" type="text" placeholder="enter acc no." class="mt-3 form-control">
+            <input [(ngModel)]="passwd" id="repass" name="npass" type="password" placeholder="set a password" class="form-control mt-3">
+            <input [(ngModel)]="confpass" id="reconfirm" name="nconfpass" type="password" placeholder="confirm password" class="form-control mt-3">
+            <button (click)="signup()" type="submit" class="btn btn-success w-50 mt-4">create</button>
         </form>
     </div>
 </div>

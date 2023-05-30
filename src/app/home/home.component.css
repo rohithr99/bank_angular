@@ -1,3 +1,4 @@
-.box__1 , .box__2 {
-    
+.box__button > button{
+    font-size: 2rem;
+    border: none;
 }
