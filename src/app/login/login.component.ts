@@ -14,24 +14,31 @@ export class LoginComponent implements OnInit{
 
   serviceData:any;
 
+  acno:any;
+  passwd:any;
+
   constructor(private rout:Router,private ds:DataService){
 
   }
   ngOnInit():void{
-    this.serviceData = this.ds.sdata;
-    console.log(this.serviceData);
-    this.ds.smethod();
     
   }
 
-  login(a : any){
-    console.log(a.value); // template rendering variable example #pswd in html file
+  login(){
+    var acno = this.acno;
+    var passwd = this.passwd;
+
+    this.ds.login(acno,passwd).subscribe((result:any) => {
+      alert(result.message);
+      this.rout.navigateByUrl('home');
+    },
+    result => {
+      alert(result.error.message);
+      this.rout.navigateByUrl("");
+    }
+    );
     
-    alert("login clicked");
-    this.rout.navigateByUrl('home');
   }
-  acnoChange(event : any){
-    console.log(event.target.value);
-    
-  }
+
 }
+

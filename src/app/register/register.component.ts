@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,11 +13,23 @@ export class RegisterComponent {
   passwd:any;
   confpass:any;
 
+  constructor(private ds: DataService, private router:Router){
+
+  }
+
   signup(){
-  console.log(this.acno);
-  console.log(this.username);
-  console.log(this.passwd);
-  console.log(this.confpass);
-  
+  if(this.passwd == this.confpass){
+    this.ds.register(this.acno,this.username,this.passwd).subscribe((result : any) => {
+      alert(result.message);
+      this.router.navigateByUrl('');
+    },
+    result => {
+      alert(result.error.message);
+    }
+    );
+  }
+  else{
+    alert("password doesn't match");
+  }
 }
 }
