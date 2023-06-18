@@ -1,4 +1,10 @@
-.box__button > button{
+.box__button > button,a{
     font-size: 2rem;
     border: none;
+}
+.s1{
+    color: green;
+}
+.s2{
+    color: red;
 }

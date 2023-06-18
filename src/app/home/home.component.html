@@ -1,25 +1,119 @@
 <div class="row">
     <div class="box__1 col-3">
         <div class="list-group box__button">
-            <button type="button" class="list-group-item list-group-item-action active text-center" aria-current="true">
-                <i class="fa-solid fa-user pe-3"></i>  View Profile
+            <button type="button" class="list-group-item list-group-item-action active text-center" aria-current="true"
+                data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="accessUser()">
+                <i class="fa-solid fa-user pe-3"></i> View Profile
             </button>
-            <button type="button" class="list-group-item list-group-item-action text-center">
+            <button type="button" class="list-group-item list-group-item-action text-center" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" (click)="userBal()">
                 <i class="fa-solid fa-sack-dollar pe-3"></i>Balance Enquiry</button>
-            <button type="button" class="list-group-item list-group-item-action text-center">
+            <button type="button" class="list-group-item list-group-item-action text-center" data-bs-toggle="modal"
+                data-bs-target="#exampleModal1">
                 <i class="fa-solid fa-money-bill-transfer pe-3"></i>Money Transfer</button>
-            <button type="button" class="list-group-item list-group-item-action text-center">
-                <i class="fa-solid fa-receipt pe-3"></i>Account Statement</button>
-            <button type="button" class="list-group-item list-group-item-action text-center">
+            <a href="transaction" type="button" class="list-group-item list-group-item-action text-center">
+                <i class="fa-solid fa-receipt pe-3"></i>Account Statement</a>
+            <button type="button" class="list-group-item list-group-item-action text-center" (click)="logout()">
                 <i class="fa-solid fa-right-from-bracket pe-3"></i>Log Out</button>
             <button type="button" class="list-group-item list-group-item-action text-center">
                 <i class="fa-solid fa-user-minus pe-3"></i> Delete Account</button>
 
-          </div>
+        </div>
     </div>
-    <div class="box__2 col-9">
-        <h1>Enjoy Net Banking with SBI</h1>
-        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+    <div class="box__2 col-9 text-center">
+        <h3 class="">Hi {{uname}}</h3>
+        <h1 class="">Enjoy Net Banking with SBI</h1>
+        <p class="p-5">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+            Vestibulum
+            tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
+            semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien
+            ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean
+            fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec
+            non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque
+            egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
+            porttitor, facilisis luctus, metus</p>
         <img src="https://i.postimg.cc/Z5hqgkfD/Whats-App-Image-2023-05-28-at-8-38-36-PM.jpg" alt="" width="500">
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+
+            <div class="modal-body text-center">
+                <img src="https://i.postimg.cc/x1C569Mv/icon-5359553-960-720.png" alt="" width="150px">
+            </div>
+            <div class="p-3">
+                <h5>User Name : {{userData.username}}</h5>
+                <hr>
+
+                <h5>Account Number : {{acno}}</h5>
+                <hr>
+                <div class="text-end">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- offcanvas -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h1 class="offcanvas-title" id="offcanvasExampleLabel">Balance Enquiry</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="text-center">
+            <img src="https://i.postimg.cc/bY5jzk27/stack-of-money-with-gold-coins-clipart-28497.jpg" width="150"
+                alt="">
+
+        </div>
+        <div class="mt-5">
+            <h3>Account Number :{{acno}}</h3>
+            <hr>
+            <h3>Balance :{{balance}} </h3>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal -- money transfer -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <form action="" [formGroup]="transaction">
+                    <h1 class="modal-title" id="exampleModalLabel1">Money Trasnfer</h1>
+                    <input formControlName="acno" type="text" class="border border-primary-subtle mt-3 form-control"
+                        placeholder="Reciepient Account Number">
+                    <div *ngIf="(this.transaction.get('acno')?.errors) && (this.transaction.get('acno')?.touched)">
+                        <p class="text-danger">must contain numbers only</p>
+                    </div>
+                    <input formControlName="amount" type="text" class="border border-primary-subtle mt-3 form-control"
+                        placeholder="Amount to send">
+                    <div *ngIf="(this.transaction.get('amount')?.errors) && (this.transaction.get('amount')?.touched)">
+                        <p class="text-danger">must contain numbers only</p>
+                    </div>
+                    <input formControlName="passwd" type="text" class="border border-primary-subtle mt-3 form-control"
+                        placeholder="Password">
+                    <div *ngIf="(this.transaction.get('passwd')?.errors) && (this.transaction.get('passwd')?.touched)">
+                        <p class="text-danger">must contain numbers and characters only</p>
+                    </div>
+                    <button class="mt-4 btn btn-success w-50" (click)="moneyTransferR()">Transfer</button>
+                </form>
+            </div>
+            <div class="text-end p-3">
+                <p [ngClass]="alertColor? 's1':'s2'" class="text-center">{{alertMessage}}</p>
+                <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">cancel</button>
+            </div>
+        </div>
     </div>
 </div>

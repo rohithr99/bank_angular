@@ -6,11 +6,26 @@ register -->
 <div>
 <h1 class = "text-center mt-5">Create New Account</h1>
     <div class="text-center form-container">
-        <form action="" class="mt-5">
-            <input [(ngModel)]="acno" id="reuser" name="nName" type="text" placeholder = "username" class="form-control">
-            <input [(ngModel)]="username" id="reacc" name="nacc" type="text" placeholder="enter acc no." class="mt-3 form-control">
-            <input [(ngModel)]="passwd" id="repass" name="npass" type="password" placeholder="set a password" class="form-control mt-3">
-            <input [(ngModel)]="confpass" id="reconfirm" name="nconfpass" type="password" placeholder="confirm password" class="form-control mt-3">
+        <form [formGroup]="registerForm" action="" class="mt-5">
+            <input formControlName="acno" id="reacc" name="nName" type="text" placeholder = "enter acc no." class="form-control">
+            <div *ngIf="(this.registerForm.get('acno')?.errors) && (this.registerForm.get('acno')?.touched)">
+                <p class="text-danger">must contain numbers only</p>
+            </div>
+            <input formControlName="username" id="reuser" name="nacc" type="text" placeholder="username" class="mt-3 form-control">
+            <div *ngIf="(this.registerForm.get('username')?.errors) && (this.registerForm.get('username')?.touched)">
+                <p class="text-danger">must contain characters only</p>
+            </div>
+            <input formControlName="passwd" id="repass" name="npass" type="password" placeholder="set a password" class="form-control mt-3">
+            <div *ngIf="(this.registerForm.get('passwd')?.errors) && (this.registerForm.get('passwd')?.touched)">
+                <p class="text-danger">must contain numbers and characters only</p>
+            </div>
+            <input formControlName="confirmPass" id="reconfirm" name="nconfpass" type="password" placeholder="confirm password" class="form-control mt-3">
+            <div *ngIf="(this.registerForm.get('confirmPass')?.errors) && (this.registerForm.get('confirmPass')?.touched)">
+                <p class="text-danger">must contain numbers and characters only</p>
+            </div>
+            <div *ngIf="pswCheck">
+                <p class="text-danger">password doesn't match</p>
+            </div>
             <button (click)="signup()" type="submit" class="btn btn-success w-50 mt-4">create</button>
         </form>
     </div>

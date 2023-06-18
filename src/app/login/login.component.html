@@ -5,6 +5,9 @@
     <img src="https://i.postimg.cc/GpmgB8c1/101-1016890-icon-bank-logo-png-transparent-png.png" alt="" width="150px" >
     <form action="" class="text-center">
     <input [(ngModel)]="acno" type="text" [placeholder]="pdata" id="u1" name="accountNumber">
+    <!-- <div *ngIf="(this.loginFrm.get('acno')?.errors) && (this.loginFrm.get('acno')?.touched)">
+        <p class="text-danger">must contain numbers only</p>
+    </div> -->
     <input [(ngModel)]="passwd" type="password" placeholder="password" id="p1" name="pass">
     <button class="mt-3" (click) = "login()">login</button>
     <p>New ?<a href="" routerLink="register"> Register</a></p>

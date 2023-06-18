@@ -1,0 +1,19 @@
+<h2 class="text-center">Account Statement</h2>
+<table class="table table-primary table-striped container mt-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Type</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of transactions; let j = index">
+        <td>{{j + 1}}</td>
+        <td>{{i.type}}</td>
+        <td>{{i.amount}}</td>
+        <td>{{i.date}}</td>
+      </tr>
+    </tbody>
+  </table>

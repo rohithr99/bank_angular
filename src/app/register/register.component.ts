@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -8,28 +9,44 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  acno:any;
-  username:any;
-  passwd:any;
-  confpass:any;
 
-  constructor(private ds: DataService, private router:Router){
+  pswCheck:boolean = false;
+
+  constructor(private ds: DataService, private router: Router, private fb: FormBuilder) {
 
   }
 
-  signup(){
-  if(this.passwd == this.confpass){
-    this.ds.register(this.acno,this.username,this.passwd).subscribe((result : any) => {
-      alert(result.message);
-      this.router.navigateByUrl('');
-    },
-    result => {
-      alert(result.error.message);
+  registerForm = this.fb.group({
+    acno: ['',[Validators.required, Validators.pattern('[0-9]+')]],
+    username: ['',[Validators.required, Validators.pattern('[a-zA-Z]+')]],
+    passwd: ['',[Validators.required, Validators.pattern('[0-9a-zA-Z]+')]],
+    confirmPass: ['',[Validators.required, Validators.pattern('[0-9a-zA-Z]+')]]
+  })
+
+  signup() {
+
+    var path = this.registerForm.value;
+
+
+    if (this.registerForm.valid) {
+      if (path.passwd == path.confirmPass) {
+        this.ds.register(path.acno, path.username, path.passwd).subscribe((result: any) => {
+          alert(result.message);
+          this.router.navigateByUrl('');
+        },
+          result => {
+            alert(result.error.message);
+          }
+        )
+      }
+      else {
+        this.pswCheck = true;
+        // alert("password doesn't match");
+      }
     }
-    );
+    else{
+      alert('Invalid Form');
+    }
+
   }
-  else{
-    alert("password doesn't match");
-  }
-}
 }

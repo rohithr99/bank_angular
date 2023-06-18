@@ -3,3 +3,6 @@
   justify-content: center;
   align-items: center;
 }
+.form-container > form{
+  min-width: 25%;
+}
