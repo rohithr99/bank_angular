@@ -86,4 +86,10 @@ export class DataService {
     getTransaction(acno : any){
       return this.http.get('http://localhost:8000/history/'+acno,this.getHeader());
     }
+
+
+    //api to delete account
+    deleteAcc(acno:any){
+      return this.http.delete('http://localhost:8000/delete/'+acno,this.getHeader());
+    }
 }

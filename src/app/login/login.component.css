@@ -6,8 +6,8 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: rgba(100, 149, 237, 0.4);
+    height: 90vh;
+    background-color: rgba(56, 112, 217, 0.4);
 
 } */
 .form-container > form{

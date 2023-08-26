@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   balance:any;
   alertMessage:any="";
   alertColor:boolean = true;
+  acno1: any;
 
   constructor(private ds: DataService,private router:Router,private fb:FormBuilder,private datePipe:DatePipe) {
 
@@ -68,6 +69,7 @@ export class HomeComponent implements OnInit {
   logout(){
     localStorage.removeItem('currentAcno');
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
     this.router.navigateByUrl("");
   }
 
@@ -104,6 +106,24 @@ export class HomeComponent implements OnInit {
       this.alertMessage = "invalid form";
       this.alertColor = false;
     }
+  }
+
+  deleteAcc(){
+    if(localStorage.getItem('currentAcno')){
+      this.acno1 = localStorage.getItem('currentAcno');
+    }
+  }
+
+  cancelChild(){
+    this.acno1 = "";
+  }
+
+  deleteAccount(event:any){
+    // console.log(event);
+    this.ds.deleteAcc(event).subscribe((result : any) => {
+      this.logout();
+      alert("account deleted");
+    })
   }
 
 }
